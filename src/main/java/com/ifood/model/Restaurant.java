@@ -24,6 +24,11 @@ public class Restaurant {
     @Column(name = "updated_at")
     private Date updatedAt;
 
+    @ManyToOne
+    @JoinColumn(name = "kitchen_id")
+    private Kitchen kitchen;
+
+
     public Long getId() {
         return id;
     }
@@ -70,6 +75,14 @@ public class Restaurant {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public Kitchen getKitchen() {
+        return kitchen;
+    }
+
+    public void setKitchen(Kitchen kitchen) {
+        this.kitchen = kitchen;
     }
 
     @Override
