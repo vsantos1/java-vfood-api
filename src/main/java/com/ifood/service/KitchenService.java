@@ -1,5 +1,7 @@
 package com.ifood.service;
 
+import com.ifood.dto.KitchenDTO;
+import com.ifood.mapper.Mapper;
 import com.ifood.model.Kitchen;
 import com.ifood.repository.KitchenRepository;
 import org.springframework.beans.BeanUtils;
@@ -20,7 +22,8 @@ public class KitchenService {
         this.kitchenRepository = kitchenRepository;
     }
 
-    public Kitchen execute(Kitchen kitchen) {
+    public Kitchen execute(KitchenDTO kitchenDTO) {
+        Kitchen kitchen = Mapper.parseObject(kitchenDTO, Kitchen.class);
         return kitchenRepository.save(kitchen);
     }
 
@@ -37,10 +40,11 @@ public class KitchenService {
 
     }
 
-    public Kitchen update(Long id, Kitchen kitchen) {
+    public Kitchen update(Long id, KitchenDTO kitchenDTO) {
         Kitchen entity = this.findById(id);
-        BeanUtils.copyProperties(kitchen, entity, "id");
+        Kitchen kitchen = Mapper.parseObject(kitchenDTO, Kitchen.class);
 
+        BeanUtils.copyProperties(kitchen, entity, "id");
         return kitchenRepository.save(entity);
     }
 

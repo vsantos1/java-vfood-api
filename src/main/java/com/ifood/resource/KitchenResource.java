@@ -1,5 +1,7 @@
 package com.ifood.resource;
 
+import com.ifood.dto.KitchenDTO;
+import com.ifood.mapper.Mapper;
 import com.ifood.model.Kitchen;
 import com.ifood.service.KitchenService;
 import org.springframework.data.domain.Page;
@@ -29,13 +31,13 @@ public class KitchenResource {
     }
 
     @PostMapping(value = "/kitchens", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Kitchen> create(@RequestBody Kitchen kitchen) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(kitchenService.execute(kitchen));
+    public ResponseEntity<Kitchen> create(@RequestBody @Valid KitchenDTO kitchenDTO) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(kitchenService.execute(kitchenDTO));
     }
 
     @PutMapping(value = "/kitchens/{kitchen_id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Kitchen> update(@PathVariable("kitchen_id") Long id, @RequestBody Kitchen kitchen) {
-        return ResponseEntity.status(HttpStatus.OK).body(kitchenService.update(id, kitchen));
+    public ResponseEntity<Kitchen> update(@PathVariable("kitchen_id") Long id, @RequestBody @Valid KitchenDTO kitchenDTO) {
+        return ResponseEntity.status(HttpStatus.OK).body(kitchenService.update(id, kitchenDTO));
     }
 
     @DeleteMapping(value = "/kitchens/{kitchen_id}")
