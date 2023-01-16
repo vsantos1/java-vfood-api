@@ -1,7 +1,10 @@
 package com.ifood.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -28,6 +31,9 @@ public class Restaurant {
     @JoinColumn(name = "kitchen_id")
     private Kitchen kitchen;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "restaurant")
+    private List<Product> products;
 
     public Long getId() {
         return id;
@@ -83,6 +89,14 @@ public class Restaurant {
 
     public void setKitchen(Kitchen kitchen) {
         this.kitchen = kitchen;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
     @Override
