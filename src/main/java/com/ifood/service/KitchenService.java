@@ -42,9 +42,8 @@ public class KitchenService {
 
     public Kitchen update(Long id, KitchenDTO kitchenDTO) {
         Kitchen entity = this.findById(id);
-        Kitchen kitchen = Mapper.parseObject(kitchenDTO, Kitchen.class);
 
-        BeanUtils.copyProperties(kitchen, entity, "id");
+        Mapper.copyProperties(kitchenDTO, entity);
         return kitchenRepository.save(entity);
     }
 
