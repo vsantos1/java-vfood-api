@@ -28,6 +28,11 @@ public class RestaurantResource {
         return ResponseEntity.status(HttpStatus.OK).body(restaurantService.listAllPaginated(pageable));
     }
 
+    @GetMapping(value = "/restaurants/{restaurant_id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Restaurant> getById(@PathVariable("restaurant_id") Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(restaurantService.findById(id));
+    }
+
     @PostMapping(value = "/restaurants", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Restaurant> create(@RequestBody @Valid RestaurantDTO restaurantDTO) {
         return ResponseEntity.status(HttpStatus.CREATED).body(restaurantService.execute(restaurantDTO));

@@ -1,5 +1,7 @@
 package com.ifood.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.UUID;
@@ -21,6 +23,7 @@ public class Product {
     private Boolean active;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "restaurant_id", nullable = false)
     private Restaurant restaurant;
 

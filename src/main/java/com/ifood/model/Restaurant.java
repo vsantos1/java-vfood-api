@@ -1,6 +1,7 @@
 package com.ifood.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -31,7 +32,7 @@ public class Restaurant {
     @JoinColumn(name = "kitchen_id")
     private Kitchen kitchen;
 
-    @JsonIgnore
+    @JsonManagedReference
     @OneToMany(mappedBy = "restaurant")
     private List<Product> products;
 
