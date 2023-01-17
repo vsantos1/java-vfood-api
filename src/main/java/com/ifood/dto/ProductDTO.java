@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.UUID;
 
 public class ProductDTO {
-    private UUID id;
+    private Long id;
 
     private String name;
 
@@ -21,11 +21,11 @@ public class ProductDTO {
     public ProductDTO() {
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

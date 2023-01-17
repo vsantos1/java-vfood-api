@@ -1,6 +1,6 @@
 CREATE TABLE tb_products
 (
-    id            VARCHAR(36)     NOT NULL,
+    id            SERIAL          NOT NULL,
     name          VARCHAR(100)    NOT NULL,
     description   VARCHAR(255),
     price         DECIMAL(10, 2)  NOT NULL,
@@ -9,13 +9,14 @@ CREATE TABLE tb_products
     UNIQUE (id),
     PRIMARY KEY (id),
     FOREIGN KEY (restaurant_id) REFERENCES tb_restaurants (id)
-) ENGINE = InnoDB;
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb3;
 
 INSERT INTO tb_products(id, name, description, price, active, restaurant_id)
-VALUES (UUID(), 'Pizza', 'Pizza de calabresa', 25.00, TRUE, 1);
+VALUES (1, 'Pizza', 'Pizza de calabresa', 25.00, TRUE, 1);
 INSERT INTO tb_products(id, name, description, price, active, restaurant_id)
-VALUES (UUID(), 'Pizza', 'Pizza de frango', 25.00, TRUE, 2);
+VALUES (2, 'Pizza', 'Pizza de frango', 25.00, TRUE, 2);
 INSERT INTO tb_products(id, name, description, price, active, restaurant_id)
-VALUES (UUID(), 'Pizza', 'Pizza de marguerita', 25.00, TRUE, 3);
+VALUES (3, 'Pizza', 'Pizza de marguerita', 25.00, TRUE, 3);
 INSERT INTO tb_products(id, name, description, price, active, restaurant_id)
-VALUES (UUID(), 'Pizza', 'Pizza de portuguesa', 25.00, TRUE, 4);
+VALUES (4, 'Pizza', 'Pizza de portuguesa', 25.00, TRUE, 4);

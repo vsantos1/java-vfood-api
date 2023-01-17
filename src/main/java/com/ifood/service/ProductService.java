@@ -14,7 +14,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class ProductService  {
+public class ProductService {
 
     private final ProductRepository productRepository;
     private final RestaurantService restaurantService;
@@ -28,7 +28,7 @@ public class ProductService  {
         return productRepository.findAll(pageable);
     }
 
-    public Product findById(UUID id) {
+    public Product findById(Long id) {
         Optional<Product> optionalProduct = productRepository.findById(id);
         if (optionalProduct.isEmpty()) {
             throw new ResourceNotFoundException("No records found for this given id");
@@ -37,6 +37,7 @@ public class ProductService  {
     }
 
     public Product execute(ProductDTO productDTO) {
+
         Restaurant restaurant = restaurantService.findById(productDTO.getRestaurant().getId());
 
         Product product = new Product();
@@ -46,7 +47,7 @@ public class ProductService  {
         return productRepository.save(product);
     }
 
-    public Product update(UUID id, ProductDTO productDTO) {
+    public Product update(Long id, ProductDTO productDTO) {
         Product product = this.findById(id);
 
         Mapper.copyProperties(productDTO, product);
@@ -54,8 +55,9 @@ public class ProductService  {
         return productRepository.save(product);
     }
 
-    public void delete(UUID id) {
-        productRepository.deleteById(id);
+    public void delete(Long id) {
+        Product product = this.findById(id);
+        productRepository.deleteById(product.getId());
     }
 
 }
