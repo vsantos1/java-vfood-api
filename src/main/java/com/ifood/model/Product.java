@@ -1,6 +1,7 @@
 package com.ifood.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -22,8 +23,8 @@ public class Product {
 
     private Boolean active;
 
+    @JsonIgnore
     @ManyToOne
-    @JsonBackReference
     @JoinColumn(name = "restaurant_id", nullable = false)
     private Restaurant restaurant;
 

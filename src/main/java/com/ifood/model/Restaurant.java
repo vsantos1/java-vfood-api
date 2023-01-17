@@ -32,7 +32,7 @@ public class Restaurant {
     @JoinColumn(name = "kitchen_id")
     private Kitchen kitchen;
 
-    @JsonManagedReference
+    @JsonIgnore
     @OneToMany(mappedBy = "restaurant")
     private List<Product> products;
 

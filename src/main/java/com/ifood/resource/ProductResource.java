@@ -41,7 +41,7 @@ public class ProductResource {
     }
 
     @PutMapping(value = "/products/{product_id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Product> update(@PathVariable("product_id") Long id, @Valid ProductDTO productDTO) {
+    public ResponseEntity<Product> update(@PathVariable("product_id") Long id, @RequestBody @Valid ProductDTO productDTO) {
         return ResponseEntity.status(HttpStatus.OK).body(productService.update(id, productDTO));
     }
 
