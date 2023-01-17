@@ -16,3 +16,6 @@ server:
   error:
     include-message: always
   port: 8080
+file:
+  upload-dir: ${UPLOAD_DIR}
+

@@ -1,11 +1,13 @@
 CREATE TABLE tb_products
 (
-    id            SERIAL          NOT NULL,
-    name          VARCHAR(100)    NOT NULL,
-    description   VARCHAR(255),
-    price         DECIMAL(10, 2)  NOT NULL,
-    active        BOOLEAN         NOT NULL DEFAULT TRUE,
-    restaurant_id BIGINT UNSIGNED NOT NULL,
+    id                SERIAL          NOT NULL,
+    name              VARCHAR(100)    NOT NULL,
+    description       VARCHAR(255),
+    price             DECIMAL(10, 2)  NOT NULL,
+    active            BOOLEAN         NOT NULL DEFAULT TRUE,
+    url               VARCHAR(255),
+    image_description VARCHAR(255),
+    restaurant_id     BIGINT UNSIGNED NOT NULL,
     UNIQUE (id),
     PRIMARY KEY (id),
     FOREIGN KEY (restaurant_id) REFERENCES tb_restaurants (id)
