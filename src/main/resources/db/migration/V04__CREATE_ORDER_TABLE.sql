@@ -9,20 +9,21 @@ CREATE TABLE tb_orders
     created_at     TIMESTAMP      NOT NULL DEFAULT CURRENT_TIMESTAMP,
     confirmed_at   TIMESTAMP,
     delivered_at   TIMESTAMP,
-    canceled_at    TIMESTAMP
-
+    canceled_at    TIMESTAMP,
+    restaurant_id  BIGINT UNSIGNED NOT NULL,
+    FOREIGN KEY (restaurant_id) REFERENCES tb_restaurants (id)
 
 )ENGINE = InnoDB;
 
 INSERT INTO tb_orders (quantity, order_status, payment_method, observation, total, created_at, confirmed_at,
-                       delivered_at, canceled_at)
+                       delivered_at, canceled_at, restaurant_id)
 VALUES (1, 'PENDING', 'CREDIT_CARD', 'Teste', 100.00, '2020-10-10 10:10:10', '2020-10-10 10:10:10',
-        '2020-10-10 10:10:10', '2020-10-10 10:10:10');
+        '2020-10-10 10:10:10', '2020-10-10 10:10:10', 1);
 INSERT INTO tb_orders (quantity, order_status, payment_method, observation, total, created_at, confirmed_at,
-                       delivered_at, canceled_at)
+                       delivered_at, canceled_at, restaurant_id)
 VALUES (2, 'DELIVERED', 'PIX', 'Teste2', 150.00, '2020-10-10 10:10:10', '2020-10-10 10:10:10', '2020-10-10 10:10:10',
-        '2020-10-10 10:10:10');
+        '2020-10-10 10:10:10', 3);
 INSERT INTO tb_orders (quantity, order_status, payment_method, observation, total, created_at, confirmed_at,
-                       delivered_at, canceled_at)
+                       delivered_at, canceled_at, restaurant_id)
 VALUES (3, 'PENDING', 'DEBIT_CARD', 'Teste2', 50.00, '2020-10-10 10:10:10', '2020-10-10 10:10:10',
-        '2020-10-10 10:10:10', '2020-10-10 10:10:10');
+        '2020-10-10 10:10:10', '2020-10-10 10:10:10', 2);
