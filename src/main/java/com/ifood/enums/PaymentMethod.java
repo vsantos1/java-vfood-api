@@ -4,8 +4,6 @@ public enum PaymentMethod {
     CREDIT_CARD,
     DEBIT_CARD,
     PIX,
-    BALANCE;
+    BALANCE
 
-    PaymentMethod() {
-    }
 }

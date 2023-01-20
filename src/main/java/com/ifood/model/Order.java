@@ -20,9 +20,11 @@ public class Order {
     private Double shippingFee;
 
     @Column(name = "order_status")
+    @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
     @Column(name = "payment_method")
+    @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
 
     private Integer quantity;
@@ -124,6 +126,14 @@ public class Order {
 
     public void setDeliveredAt(Date deliveredAt) {
         this.deliveredAt = deliveredAt;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
     public Date getCanceledAt() {
