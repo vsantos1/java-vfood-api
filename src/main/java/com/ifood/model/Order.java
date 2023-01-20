@@ -42,6 +42,10 @@ public class Order {
     @Column(name = "canceled_at")
     private Date canceledAt;
 
+    @ManyToOne
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
+
     public Long getId() {
         return id;
     }

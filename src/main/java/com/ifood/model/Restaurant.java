@@ -36,6 +36,10 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant")
     private List<Product> products;
 
+    @OneToMany(mappedBy = "restaurant")
+    @JsonIgnore
+    private List<Order> orders;
+
     public Long getId() {
         return id;
     }
@@ -98,6 +102,14 @@ public class Restaurant {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
     @Override
