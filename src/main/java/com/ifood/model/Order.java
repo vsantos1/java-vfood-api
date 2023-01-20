@@ -1,5 +1,6 @@
 package com.ifood.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ifood.enums.OrderStatus;
 import com.ifood.enums.PaymentMethod;
 
@@ -45,6 +46,7 @@ public class Order {
     private Date canceledAt;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 

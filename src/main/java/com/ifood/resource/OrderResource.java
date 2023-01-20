@@ -1,5 +1,6 @@
 package com.ifood.resource;
 
+import com.ifood.dto.OrderDTO;
 import com.ifood.model.Order;
 import com.ifood.service.OrderService;
 import org.springframework.data.domain.Page;
@@ -8,10 +9,9 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/api/v1")
@@ -39,5 +39,21 @@ public class OrderResource {
     public ResponseEntity<Order> getById(@PathVariable("order_id") Long id) {
 
         return ResponseEntity.status(HttpStatus.OK).body(orderService.findById(id));
+    }
+
+    @PostMapping(value = "/orders/restaurants/{restaurant_id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Order> create(@PathVariable("restaurant_id") Long restaurantId, @Valid @RequestBody OrderDTO orderDTO) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(orderService.execute(restaurantId, orderDTO));
+    }
+
+    @PutMapping(value = "/orders/{order_id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Order> update(@PathVariable("order_id") Long id, @Valid @RequestBody OrderDTO orderDTO) {
+        return ResponseEntity.status(HttpStatus.OK).body(orderService.update(id, orderDTO));
+    }
+
+    @DeleteMapping(value = "/orders/{order_id}")
+    public ResponseEntity<Void> delete(@PathVariable("order_id") Long id) {
+        orderService.delete(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

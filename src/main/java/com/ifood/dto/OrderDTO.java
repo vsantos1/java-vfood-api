@@ -24,10 +24,8 @@ public class OrderDTO {
 
     private PaymentMethod paymentMethod;
 
-    @NotNull
     private Integer quantity;
 
-    @NotEmpty
     private String observation;
 
     private Date createdAt;
@@ -38,11 +36,10 @@ public class OrderDTO {
 
     private Date canceledAt;
 
-    @Valid
-    @NotNull
-    private Restaurant restaurant;
 
-    public  OrderDTO(){}
+    public OrderDTO() {
+    }
+
 
     public Long getId() {
         return id;
@@ -132,11 +129,5 @@ public class OrderDTO {
         this.canceledAt = canceledAt;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
-    }
 
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
-    }
 }
