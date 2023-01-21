@@ -3,6 +3,7 @@ package com.ifood.resource;
 import com.ifood.dto.ProductDTO;
 import com.ifood.model.Product;
 import com.ifood.service.ProductService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -16,6 +17,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping(value = "/api/v1")
+@Tag(name = "Product", description = "Product endpoint API")
 public class ProductResource {
 
     private final ProductService productService;

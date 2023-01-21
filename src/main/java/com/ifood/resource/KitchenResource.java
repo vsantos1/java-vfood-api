@@ -4,6 +4,7 @@ import com.ifood.dto.KitchenDTO;
 import com.ifood.mapper.Mapper;
 import com.ifood.model.Kitchen;
 import com.ifood.service.KitchenService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -17,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/v1/")
+@Tag(name = "Kitchen", description = "Kitchen endpoint API")
 public class KitchenResource {
 
     private final KitchenService kitchenService;

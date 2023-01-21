@@ -6,6 +6,7 @@ import com.ifood.model.Product;
 import com.ifood.model.Restaurant;
 import com.ifood.repository.ProductRepository;
 import com.ifood.service.RestaurantService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -19,6 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/v1")
+@Tag(name = "Restaurant", description = "Restaurant endpoint API")
 public class RestaurantResource {
 
     private final RestaurantService restaurantService;

@@ -2,6 +2,7 @@ package com.ifood.resource;
 
 import com.ifood.model.Product;
 import com.ifood.service.FileService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import net.minidev.json.JSONObject;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
@@ -21,6 +22,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping(value = "/api/v1/files")
+@Tag(name = "File", description = "File endpoint API")
 public class FileResource {
 
 

@@ -3,6 +3,7 @@ package com.ifood.resource;
 import com.ifood.dto.OrderDTO;
 import com.ifood.model.Order;
 import com.ifood.service.OrderService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -15,6 +16,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/api/v1")
+@Tag(name = "Order", description = "Order endpoint API")
 public class OrderResource {
 
     private final OrderService orderService;
