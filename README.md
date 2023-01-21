@@ -76,10 +76,13 @@ file:
 - [x] [Get postman](https://www.postman.com/)
 - [x] [Postman Collection](postman/Food-delivery.postman_collection.json)
 
-
+<img src="postman/collections.png" alt="Postman collection image">
 
 ## Swagger API documentation
 
 **LOCALHOST**
 
 [Swagger API documentation](http://localhost:8080/swagger-ui.html)
+
+<img src="postman/doc_1.png" alt="First endpoints image">
+<img src="postman/doc_2.png" alt="Second endpoints image">
